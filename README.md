@@ -111,7 +111,7 @@ POST /api/diagnostics/submit         → { taskId, answerIndex: number } → { c
 GET  /api/tasks/current              → { id, title, description, difficulty }
 POST /api/tasks/submit               → { taskId, prSummary } → { score, feedback }
 
-GET  /api/tier/status                → { currentTier: number, score: number, unlockedAccess: string[] }
+GET  /api/tier/status                → { complianceSigned: boolean, diagnosticScore: number, taskScores: number[], currentTier: number, tierLabel: string, unlockedAccess: string[] }
 
 GET  /api/team/structure             → { modules: [{ name, owner, contact }] }
 ```
