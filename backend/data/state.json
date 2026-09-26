@@ -1,6 +1,6 @@
 {
   "complianceSigned": true,
-  "diagnosticScore": 60,
+  "diagnosticScore": 100,
   "taskScores": [
     {
       "taskId": "task1",
@@ -121,10 +121,48 @@
       "taskId": "task1",
       "score": 77,
       "submittedAt": "2026-09-26T06:31:02.085Z"
+    },
+    {
+      "taskId": "task1",
+      "score": 77,
+      "submittedAt": "2026-09-26T06:54:24.059Z"
+    },
+    {
+      "taskId": "task1",
+      "score": 77,
+      "submittedAt": "2026-09-26T06:56:17.618Z"
+    },
+    {
+      "taskId": "task1",
+      "score": 75,
+      "submittedAt": "2026-09-26T06:57:21.951Z"
+    },
+    {
+      "taskId": "task1",
+      "score": 77,
+      "submittedAt": "2026-09-26T06:57:23.948Z"
+    },
+    {
+      "taskId": "task1",
+      "score": 76,
+      "submittedAt": "2026-09-26T06:57:38.484Z"
+    },
+    {
+      "taskId": "task1",
+      "score": 75,
+      "submittedAt": "2026-09-26T07:02:11.785Z"
+    },
+    {
+      "taskId": "task1",
+      "score": 77,
+      "submittedAt": "2026-09-26T07:07:11.745Z"
     }
   ],
-  "currentTier": 0,
+  "currentTier": 3,
   "unlockedAccess": [
-    "Sandbox"
+    "Sandbox",
+    "Dev Environment",
+    "Repo Read",
+    "Repo Write (Non-Critical)"
   ]
 }
