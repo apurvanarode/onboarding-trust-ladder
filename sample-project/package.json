@@ -1,0 +1,12 @@
+{
+  "name": "taskflow-api",
+  "version": "1.0.0",
+  "description": "A mini order-management API for onboarding practice",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
