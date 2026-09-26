@@ -58,5 +58,41 @@
     ],
     "correctIndex": 1,
     "difficulty": "hard"
+  },
+  {
+    "id": "q6",
+    "question": "In sample-project/src/routes/orders.js, the POST / handler destructures { customerName, amount, status } from req.body and immediately creates the order. What is the most critical validation gap?",
+    "options": [
+      "status is not checked against an enum of allowed values such as 'pending', 'shipped', 'delivered', or 'cancelled'",
+      "amount is never validated — it could be absent, negative, or non-numeric, and the order would still be created",
+      "customerName is not trimmed for whitespace before being stored",
+      "nextId should be generated with crypto.randomUUID() instead of a counter"
+    ],
+    "correctIndex": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": "q7",
+    "question": "In sample-project/src/routes/users.js, the POST / handler creates and pushes a new user without any guard. What bug does the intentional comment in that file flag?",
+    "options": [
+      "The handler returns 200 instead of 201, violating REST conventions",
+      "The id counter nextId is not persisted to disk so it resets on server restart",
+      "There is no duplicate email check, so two users can be created with the same email address",
+      "req.body is never parsed because express.json() middleware is not applied inside the router"
+    ],
+    "correctIndex": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": "q8",
+    "question": "In sample-project/src/routes/orders.js, nextId is seeded as `orders.length + 1` (evaluates to 6 at startup). Under which specific scenario does this seeding strategy produce a duplicate id?",
+    "options": [
+      "When more than 99 orders are created in a single session",
+      "When an order is deleted, shrinking the array so length + 1 equals an id that already exists",
+      "When the server restarts and the in-memory array is re-initialised from the hardcoded list",
+      "When two POST requests arrive concurrently and both read nextId before either increments it"
+    ],
+    "correctIndex": 1,
+    "difficulty": "hard"
   }
 ]
