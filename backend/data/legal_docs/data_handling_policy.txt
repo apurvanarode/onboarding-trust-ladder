@@ -1,0 +1,36 @@
+CUSTOMER DATA HANDLING POLICY
+
+Acme Systems, Inc.
+Document Reference: POLICY-DATA-002
+Version: 2.1 | Status: Active
+
+This policy establishes mandatory rules governing the use of customer data across all engineering,
+quality assurance, and data science activities at Acme Systems, Inc.
+
+1. SCOPE
+   This policy applies to all employees, contractors, and third-party service providers who have
+   access to Acme Systems production systems or customer data in any form.
+
+2. PROHIBITION ON PRODUCTION DATA IN NON-PRODUCTION ENVIRONMENTS
+   Under no circumstances shall real production customer data — including but not limited to
+   personally identifiable information (PII), payment records, usage logs, or account credentials —
+   be copied, exported, or used within development, staging, or testing environments.
+
+3. REQUIREMENT FOR SYNTHETIC DATA
+   All development and testing activities that require representative data sets must use
+   synthetically generated data only. Synthetic data must be created using approved internal
+   tooling or a vendor tool listed on the Acme Systems Approved Tools Register.
+
+4. ACCESS CONTROLS
+   Access to production data is restricted on a need-to-know basis and must be approved by a
+   designated Data Owner. All access events are logged and subject to periodic audit.
+
+5. INCIDENT REPORTING
+   Any accidental exposure of production customer data to a non-production environment must be
+   reported to the Information Security team within two (2) hours of discovery via the internal
+   incident management system.
+
+6. ENFORCEMENT
+   Violations of this policy may result in disciplinary action up to and including termination
+   of employment or contract, and may be referred to appropriate regulatory authorities where
+   required by applicable law.

@@ -1,0 +1,43 @@
+OPEN SOURCE SOFTWARE LICENSE POLICY
+
+Acme Systems, Inc.
+Document Reference: POLICY-OSS-003
+Version: 1.4 | Status: Active
+
+This policy governs the evaluation, approval, and use of open source software (OSS) dependencies
+within all products and internal systems developed or maintained by Acme Systems, Inc.
+
+1. SCOPE
+   This policy applies to all software engineers, data engineers, and technical contractors who
+   introduce new third-party libraries or open source packages into any Acme Systems codebase,
+   regardless of programming language or platform.
+
+2. LICENSE-CHECK REQUIREMENT
+   No new open source dependency may be added to any Acme Systems project without first completing
+   the License Approval Process. Engineers must submit a License Review Request via the internal
+   developer portal prior to merging any pull request that introduces a new dependency.
+
+3. PRE-APPROVED LICENSES
+   The following licenses are pre-approved and do not require individual review:
+   (a) MIT License — permitted without restriction for commercial use.
+   (b) Apache License 2.0 — permitted without restriction; engineers must retain the NOTICE
+       file where required by the license terms.
+
+4. LICENSES REQUIRING MANAGER APPROVAL
+   The following licenses require explicit written approval from the engineer's direct manager
+   before use, due to potential copyleft obligations:
+   (a) GNU General Public License (GPL) v2 and v3 — use in any product distributed externally
+       must be reviewed by the Legal team in addition to manager approval.
+
+5. PROHIBITED LICENSES
+   Any license not listed in clauses 3 or 4 is considered unapproved by default and must not
+   be used until a formal review has been completed and recorded.
+
+6. AUDIT AND COMPLIANCE
+   Acme Systems conducts quarterly automated license scans across all repositories. Any
+   unapproved dependency discovered during an audit must be remediated within ten (10)
+   business days or the affected component must be taken offline until resolution.
+
+7. RESPONSIBILITY
+   The engineer who merges a dependency is responsible for ensuring license compliance.
+   Ignorance of a dependency's license terms is not an accepted defence in an audit finding.
