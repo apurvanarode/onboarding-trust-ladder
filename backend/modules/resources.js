@@ -153,12 +153,12 @@ router.get('/checklist', (req, res) => {
 });
 
 // ---------------------------------------------------------------------------
-// GET /api/resources/team
+// GET /api/resources/structure
 // Returns a list of modules with their owners and contact details.
 // Data is read from backend/data/team_structure.json so it can be updated
 // without touching route code.
 // ---------------------------------------------------------------------------
-router.get('/team', (req, res) => {
+router.get('/structure', (req, res) => {
   const teamFile = path.resolve(__dirname, '..', 'data', 'team_structure.json');
   const team = JSON.parse(fs.readFileSync(teamFile, 'utf8'));
   res.json(team);
