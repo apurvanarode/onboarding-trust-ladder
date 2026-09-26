@@ -62,20 +62,26 @@ router.post('/submit', (req, res) => {
   }
 
   // --- Simulated grading logic -------------------------------------------
-  // Base score sits in the middle of the expected 70-95 range.
-  // Each quality keyword found in the summary adds weight toward the ceiling.
-  const QUALITY_KEYWORDS = ['validation', 'validate', 'check', 'test', 'guard', 'sanitize', 'sanitise', 'reject', 'error'];
+  // Score range: 70-95, with a random jitter and keyword weighting.
+  // High-signal keywords (validation/check/test) contribute more weight per
+  // the spec: "weighted higher for validation/check/test keywords".
+  const HIGH_VALUE_KEYWORDS = ['validation', 'validate', 'check', 'test'];
+  const STANDARD_KEYWORDS   = ['guard', 'sanitize', 'sanitise', 'reject', 'error'];
   const BASE_SCORE = 70;
-  const MAX_BONUS = 25; // 70 + 25 = 95 ceiling
+  const MAX_BONUS = 22; // keyword ceiling (leaves 3 pts for jitter so max stays ≤ 95)
+  const MAX_JITTER = 3; // random ±0-3 added on top
 
   const summaryLower = String(prSummary).toLowerCase();
-  const matchCount = QUALITY_KEYWORDS.filter((kw) => summaryLower.includes(kw)).length;
+  const highMatches     = HIGH_VALUE_KEYWORDS.filter((kw) => summaryLower.includes(kw)).length;
+  const standardMatches = STANDARD_KEYWORDS.filter((kw) => summaryLower.includes(kw)).length;
 
-  // Each unique matched keyword is worth up to (MAX_BONUS / total keywords) points,
-  // capped so the total never exceeds 95.
-  const bonusPerKeyword = MAX_BONUS / QUALITY_KEYWORDS.length;
-  const bonus = Math.min(MAX_BONUS, Math.round(matchCount * bonusPerKeyword));
-  const score = BASE_SCORE + bonus;
+  // High-value keywords are worth 3× more than standard ones.
+  // Normalise so maximum possible weight == MAX_BONUS.
+  const maxWeight = HIGH_VALUE_KEYWORDS.length * 3 + STANDARD_KEYWORDS.length;
+  const weight    = highMatches * 3 + standardMatches;
+  const bonus     = Math.round((weight / maxWeight) * MAX_BONUS);
+  const jitter    = Math.floor(Math.random() * (MAX_JITTER + 1)); // 0-3 inclusive
+  const score     = Math.min(95, BASE_SCORE + bonus + jitter);
 
   // Build human-readable feedback
   let feedback;
