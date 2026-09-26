@@ -1,0 +1,36 @@
+MUTUAL NON-DISCLOSURE AGREEMENT
+
+Acme Systems, Inc.
+Document Reference: LEGAL-NDA-001
+Effective Date: Upon Countersignature
+
+This Mutual Non-Disclosure Agreement ("Agreement") is entered into between Acme Systems, Inc.
+("Company") and the undersigned party ("Recipient") to protect confidential information shared
+in the course of a professional relationship.
+
+1. DEFINITION OF CONFIDENTIAL INFORMATION
+   Confidential Information includes, but is not limited to, proprietary source code, software
+   architecture, algorithms, customer data, personally identifiable information (PII), business
+   strategies, financial projections, and any other non-public materials disclosed by either party.
+
+2. OBLIGATIONS OF RECIPIENT
+   The Recipient agrees to: (a) hold all Confidential Information in strict confidence; (b) not
+   disclose such information to any third party without prior written consent; (c) use Confidential
+   Information solely for the purposes agreed upon in writing.
+
+3. EXCLUSIONS
+   This Agreement does not apply to information that is: (a) publicly available through no fault
+   of the Recipient; (b) independently developed without use of Confidential Information; (c)
+   disclosed pursuant to a lawful court order, provided the disclosing party is given prior notice.
+
+4. TERM
+   This Agreement remains in effect for a period of three (3) years from the Effective Date, unless
+   terminated earlier by mutual written agreement.
+
+5. REMEDIES
+   Any breach of this Agreement may cause irreparable harm. Acme Systems reserves the right to
+   seek injunctive relief in addition to all other available legal remedies.
+
+6. GOVERNING LAW
+   This Agreement shall be governed by the laws of the jurisdiction in which Acme Systems, Inc.
+   is incorporated.
