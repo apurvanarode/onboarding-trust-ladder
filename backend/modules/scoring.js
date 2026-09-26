@@ -76,11 +76,9 @@ router.post('/submit', (req, res) => {
   const highMatches     = HIGH_VALUE_KEYWORDS.filter((kw) => summaryLower.includes(kw)).length;
   const standardMatches = STANDARD_KEYWORDS.filter((kw) => summaryLower.includes(kw)).length;
 
-  // High-value keywords are worth 3× more than standard ones.
-  // Normalise so maximum possible weight == MAX_BONUS.
-  const maxWeight = HIGH_VALUE_KEYWORDS.length * 3 + STANDARD_KEYWORDS.length;
-  const weight    = highMatches * 3 + standardMatches;
-  const bonus     = Math.round((weight / maxWeight) * MAX_BONUS);
+  // Each high-value keyword match is worth 6 points, each standard keyword
+  // is worth 2 points, capped at MAX_BONUS so score never exceeds 95 with jitter.
+  const bonus     = Math.min(MAX_BONUS, highMatches * 6 + standardMatches * 2);
   const jitter    = Math.floor(Math.random() * (MAX_JITTER + 1)); // 0-3 inclusive
   const score     = Math.min(95, BASE_SCORE + bonus + jitter);
 
