@@ -205,6 +205,16 @@ body {
 .check-icon.fail  { background: var(--red);    border-color: var(--red);    color: #fff; }
 .check-icon.pending { background: var(--bg); color: var(--muted); }
 
+.resource-section-heading {
+  font-size: .75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--muted);
+  margin-top: 6px;
+  display: block;
+}
+
 .check-text { color: var(--text); }
 .check-text .check-note {
   display: block;
@@ -557,4 +567,21 @@ body {
   border-top: 1px solid #fca5a5;
   padding-top: 14px;
   line-height: 1.5;
+}
+
+/* ── LOADING & ERROR STATES ──────────────────────────────── */
+.loading-placeholder {
+  color: var(--muted);
+  font-size: .85rem;
+  font-style: italic;
+  padding: 3px 0;
+  list-style: none;
+}
+
+.error-item {
+  color: var(--red);
+  font-size: .85rem;
+  font-weight: 500;
+  padding: 3px 0;
+  list-style: none;
 }
