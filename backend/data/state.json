@@ -1,4 +1,7 @@
 {
+  "complianceSigned": false,
   "diagnosticScore": 0,
-  "taskScores": []
+  "taskScores": [],
+  "currentTier": 0,
+  "unlockedAccess": ["Sandbox"]
 }
