@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const { recomputeTier } = require('./accessTiers');
 
 const router = express.Router();
 
@@ -46,12 +47,10 @@ router.post('/submit', (req, res) => {
     const state = readJSON(STATE_PATH);
     state.diagnosticScore = Math.min(100, state.diagnosticScore + 20);
     writeJSON(STATE_PATH, state);
-
-    // TODO: call accessTiers.js /recompute after updating diagnosticScore
-    // so that the user's access tier is recalculated based on the new score.
   }
 
-  res.json({ correct });
+  const tier = recomputeTier();
+  res.json({ correct, tier });
 });
 
 module.exports = router;

@@ -3,5 +3,7 @@
   "diagnosticScore": 0,
   "taskScores": [],
   "currentTier": 0,
-  "unlockedAccess": ["Sandbox"]
+  "unlockedAccess": [
+    "Sandbox"
+  ]
 }

@@ -113,13 +113,16 @@ function writeState(state) {
 function computeTier(state) {
   const { complianceSigned, diagnosticScore, taskScores } = state;
 
+  // taskScores entries are objects { taskId, score, submittedAt }; extract the numeric score.
+  const scores = taskScores.map((s) => (typeof s === 'object' ? s.score : s));
+
   // Tier 4: full team access — needs >= 2 tasks and an average score of 85+
   if (
     complianceSigned &&
     diagnosticScore >= 60 &&
-    taskScores.length >= 2 &&
-    taskScores.some((s) => s >= 70) &&
-    taskScores.reduce((sum, s) => sum + s, 0) / taskScores.length >= 85
+    scores.length >= 2 &&
+    scores.some((s) => s >= 70) &&
+    scores.reduce((sum, s) => sum + s, 0) / scores.length >= 85
   ) {
     return 4;
   }
@@ -128,7 +131,7 @@ function computeTier(state) {
   if (
     complianceSigned &&
     diagnosticScore >= 60 &&
-    taskScores.some((s) => s >= 70)
+    scores.some((s) => s >= 70)
   ) {
     return 3;
   }
@@ -217,4 +220,29 @@ router.post('/recompute', (req, res) => {
 // Export
 // ---------------------------------------------------------------------------
 
+// ---------------------------------------------------------------------------
+// Reusable recompute helper — called directly by other modules after they
+// mutate state.json, so tier advancement is synchronous with no HTTP round-trip.
+// ---------------------------------------------------------------------------
+
+/**
+ * Re-evaluate tier rules against the current state.json, persist the result,
+ * and return the standard tier-status payload.
+ *
+ * @returns {{ currentTier: number, tierLabel: string, unlockedAccess: string[], complianceSigned: boolean, diagnosticScore: number, taskScores: Array }}
+ */
+function recomputeTier() {
+  const state = readState();
+  const newTier = computeTier(state);
+  const tierDef = TIERS[newTier];
+
+  state.currentTier = newTier;
+  state.unlockedAccess = tierDef.access;
+
+  writeState(state);
+
+  return buildResponse(state);
+}
+
 module.exports = router;
+module.exports.recomputeTier = recomputeTier;

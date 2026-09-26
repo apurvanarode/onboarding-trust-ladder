@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
+const { recomputeTier } = require('./accessTiers');
 
 const router = express.Router();
 
@@ -101,7 +102,8 @@ router.post('/submit', (req, res) => {
   state.taskScores.push({ taskId, score, submittedAt: new Date().toISOString() });
   writeJSON(STATE_PATH, state);
 
-  res.json({ score, feedback });
+  const tier = recomputeTier();
+  res.json({ score, feedback, tier });
 });
 
 module.exports = router;
