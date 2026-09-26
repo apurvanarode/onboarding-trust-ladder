@@ -205,6 +205,15 @@ body {
 .check-icon.fail  { background: var(--red);    border-color: var(--red);    color: #fff; }
 .check-icon.pending { background: var(--bg); color: var(--muted); }
 
+.info-bullet {
+  flex-shrink: 0;
+  width: 18px;
+  margin-top: 1px;
+  color: var(--muted);
+  font-size: .9rem;
+  text-align: center;
+}
+
 .resource-section-heading {
   font-size: .75rem;
   font-weight: 600;

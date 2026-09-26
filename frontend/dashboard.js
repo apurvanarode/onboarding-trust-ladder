@@ -189,7 +189,7 @@ async function loadAndRenderResources() {
       <li class="resource-section-heading">${heading}</li>
       ${items.map(item => `
         <li>
-          <span class="check-icon pending">○</span>
+          <span class="info-bullet">•</span>
           <span class="check-text">${item}</span>
         </li>`).join("")}
     `).join("");
