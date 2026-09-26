@@ -1,0 +1,32 @@
+{
+  "modules": [
+    {
+      "name": "orders",
+      "owner": "Priya S.",
+      "role": "Backend Engineer",
+      "contact": "priya@acme.dev",
+      "askMeAbout": "Order lifecycle, fulfilment state machine, and the orders-service sandbox setup"
+    },
+    {
+      "name": "users",
+      "owner": "Marco T.",
+      "role": "Backend Engineer",
+      "contact": "marco@acme.dev",
+      "askMeAbout": "Auth flows, JWT refresh strategy, and user-profile schema migrations"
+    },
+    {
+      "name": "infra",
+      "owner": "Selin K.",
+      "role": "Platform / DevOps Engineer",
+      "contact": "selin@acme.dev",
+      "askMeAbout": "CI/CD pipelines, Docker Compose local stack, and environment variable management"
+    },
+    {
+      "name": "qa",
+      "owner": "Darius O.",
+      "role": "QA Engineer",
+      "contact": "darius@acme.dev",
+      "askMeAbout": "Integration test strategy, test-data seeding scripts, and how to run the full E2E suite locally"
+    }
+  ]
+}
