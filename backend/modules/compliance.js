@@ -8,8 +8,12 @@
  * Mounted at /api/compliance by the main server file.
  */
 
+const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const router = express.Router();
+
+const STATE_PATH = path.join(__dirname, '../data/state.json');
 
 // In-memory tracking of which documents have been signed.
 // Keys are the document filenames without extension.
@@ -67,7 +71,15 @@ router.post('/sign', (req, res) => {
   }
 
   signatureStatus[docId] = true;
-  res.json(buildStatus());
+
+  const status = buildStatus();
+  if (status.signed) {
+    const state = JSON.parse(fs.readFileSync(STATE_PATH, 'utf8'));
+    state.complianceSigned = true;
+    fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2));
+  }
+
+  res.json(status);
 });
 
 module.exports = router;

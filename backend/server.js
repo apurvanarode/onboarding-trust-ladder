@@ -7,7 +7,7 @@ app.use(express.json());
 app.use('/api/compliance', require('./modules/compliance'));
 app.use('/api/resources', require('./modules/resources'));
 app.use('/api/diagnostics', require('./modules/diagnostics'));
-// app.use('/api/tasks', require('./modules/scoring'));
+app.use('/api/tasks', require('./modules/scoring'));
 app.use('/api/tier', require('./modules/accessTiers'));
 app.use('/api/team', require('./modules/resources'));
 
