@@ -1,0 +1,62 @@
+[
+  {
+    "id": "q1",
+    "question": "Which HTTP method should be used to partially update an existing resource in a RESTful API?",
+    "options": [
+      "PUT",
+      "POST",
+      "PATCH",
+      "DELETE"
+    ],
+    "correctIndex": 2,
+    "difficulty": "easy"
+  },
+  {
+    "id": "q2",
+    "question": "In Express, which method registers a middleware function that runs for every incoming request regardless of path?",
+    "options": [
+      "app.get()",
+      "app.use()",
+      "app.all()",
+      "app.route()"
+    ],
+    "correctIndex": 1,
+    "difficulty": "easy"
+  },
+  {
+    "id": "q3",
+    "question": "What is the correct HTTP status code to return when a POST request successfully creates a new resource?",
+    "options": [
+      "200 OK",
+      "204 No Content",
+      "201 Created",
+      "202 Accepted"
+    ],
+    "correctIndex": 2,
+    "difficulty": "medium"
+  },
+  {
+    "id": "q4",
+    "question": "When using the `express-validator` library, which call is required after defining validation rules to actually execute them and collect errors?",
+    "options": [
+      "req.validate()",
+      "validationResult(req)",
+      "check(req).run()",
+      "req.getValidationResult()"
+    ],
+    "correctIndex": 1,
+    "difficulty": "medium"
+  },
+  {
+    "id": "q5",
+    "question": "In Express, a custom error-handling middleware is distinguished from a regular middleware by its signature. Which signature is correct, and why does the arity matter?",
+    "options": [
+      "(req, res) — Express treats any 2-argument function as an error handler",
+      "(err, req, res, next) — Express detects the 4-argument signature and routes errors to it instead of normal request flow",
+      "(req, res, next) — adding a third argument enables error-catching mode automatically",
+      "(err, res, next) — the first argument name must be 'err' for Express to identify it"
+    ],
+    "correctIndex": 1,
+    "difficulty": "hard"
+  }
+]
