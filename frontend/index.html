@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Onboarding Trust Ladder — Alex</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── MODE TOGGLE ───────────────────────────────────── -->
+  <div class="mode-toggle-bar">
+    <span class="mode-toggle-label" id="toggleLabelBefore">Before (Traditional Onboarding)</span>
+
+    <button
+      class="toggle-switch"
+      id="modeToggle"
+      role="switch"
+      aria-checked="true"
+      aria-label="Switch between Before and After views"
+      onclick="setMode(this.getAttribute('aria-checked') === 'true' ? 'before' : 'after')"
+    >
+      <span class="toggle-knob"></span>
+    </button>
+
+    <span class="mode-toggle-label active" id="toggleLabelAfter">After (Trust Ladder)</span>
+  </div>
+
+  <!-- ── BEFORE PANEL ──────────────────────────────────── -->
+  <div class="before-panel" id="beforePanel" style="display:none">
+    <div class="before-card">
+      <div class="before-badge">⚠ Traditional Onboarding</div>
+      <h2 class="before-title">Day 1: Full Access Granted Immediately</h2>
+      <ul class="before-list">
+        <li>
+          <span class="before-icon">✕</span>
+          <span><strong>Full repository access</strong> granted on day one — no code review history, no familiarity with conventions required.</span>
+        </li>
+        <li>
+          <span class="before-icon">✕</span>
+          <span><strong>Production-adjacent access</strong> provisioned immediately — databases, S3 buckets, and deployment pipelines available from the first login.</span>
+        </li>
+        <li>
+          <span class="before-icon">✕</span>
+          <span><strong>No compliance check</strong> — security training, NDA, and acceptable-use acknowledgements are optional or handled weeks later.</span>
+        </li>
+        <li>
+          <span class="before-icon">✕</span>
+          <span><strong>No skill verification</strong> — developer capabilities, toolchain readiness, and environment hygiene are assumed, not confirmed.</span>
+        </li>
+        <li>
+          <span class="before-icon">✕</span>
+          <span><strong>No audit trail</strong> — access grants are undocumented; revocation requires manual intervention with no baseline to revert to.</span>
+        </li>
+      </ul>
+      <p class="before-footnote">Toggle to <em>After</em> to see how the Trust Ladder replaces this with structured, progressive access.</p>
+    </div>
+  </div>
+
+  <!-- ── HEADER ─────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="header-meta">
+      <span class="app-title">Onboarding Trust Ladder</span>
+      <span class="dev-badge">👤 Alex Chen · Junior Developer</span>
+    </div>
+
+    <nav class="progress-track" id="progressTrack" role="list" aria-label="Onboarding steps">
+      <!-- rendered by JS -->
+    </nav>
+  </header>
+
+  <!-- ── MAIN GRID ──────────────────────────────────────── -->
+  <main class="main-grid">
+
+    <!-- LEFT — compliance checklist -->
+    <aside class="card panel-left" id="compliancePanel">
+      <h2 class="panel-title">Compliance Checklist</h2>
+      <ul class="checklist" id="complianceList">
+        <!-- rendered by JS -->
+      </ul>
+    </aside>
+
+    <!-- CENTER — active task -->
+    <section class="card panel-center" id="taskPanel">
+      <div class="task-header">
+        <span class="step-label" id="stepLabel"></span>
+        <span class="task-status" id="taskStatus"></span>
+      </div>
+      <h1 class="task-title" id="taskTitle"></h1>
+      <p class="task-desc" id="taskDesc"></p>
+
+      <div class="diagnostics-block" id="diagnosticsBlock">
+        <!-- rendered by JS -->
+      </div>
+
+      <div class="task-actions">
+        <button class="btn-primary" id="submitBtn" onclick="handleSubmit()">Run Diagnostic</button>
+        <button class="btn-secondary" id="nextBtn" onclick="handleNext()" style="display:none">Next Step →</button>
+      </div>
+
+      <div class="result-block" id="resultBlock" style="display:none"></div>
+    </section>
+
+    <!-- RIGHT — resources + team -->
+    <aside class="card panel-right" id="resourcePanel">
+      <h2 class="panel-title">Resources</h2>
+      <ul class="checklist" id="resourceList">
+        <!-- rendered by JS -->
+      </ul>
+
+      <h2 class="panel-title section-gap">Team Structure</h2>
+      <ul class="team-list" id="teamList">
+        <!-- rendered by JS -->
+      </ul>
+    </aside>
+
+  </main>
+
+  <!-- ── FOOTER SCORE BAR ───────────────────────────────── -->
+  <footer class="score-footer">
+    <div class="score-meta">
+      <span class="score-label">Trust Score</span>
+      <span class="score-value" id="scoreValue">0 / 100</span>
+    </div>
+    <div class="score-track">
+      <div class="score-fill" id="scoreFill" style="width:0%"></div>
+    </div>
+    <span class="score-hint" id="scoreHint"></span>
+  </footer>
+
+  <script src="dashboard.js"></script>
+  <script>
+    function setMode(mode) {
+      var isBefore = mode === 'before';
+      var toggle   = document.getElementById('modeToggle');
+      var before   = document.getElementById('beforePanel');
+      var header   = document.querySelector('.site-header');
+      var main     = document.querySelector('.main-grid');
+      var footer   = document.querySelector('.score-footer');
+      var lblBefore = document.getElementById('toggleLabelBefore');
+      var lblAfter  = document.getElementById('toggleLabelAfter');
+
+      toggle.setAttribute('aria-checked', isBefore ? 'false' : 'true');
+      toggle.classList.toggle('is-before', isBefore);
+
+      before.style.display  = isBefore ? 'block' : 'none';
+      header.style.display  = isBefore ? 'none'  : '';
+      main.style.display    = isBefore ? 'none'  : '';
+      footer.style.display  = isBefore ? 'none'  : '';
+
+      lblBefore.classList.toggle('active', isBefore);
+      lblAfter.classList.toggle('active', !isBefore);
+    }
+  </script>
+</body>
+</html>
