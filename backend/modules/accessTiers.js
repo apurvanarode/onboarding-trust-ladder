@@ -113,13 +113,17 @@ function writeState(state) {
 function computeTier(state) {
   const { complianceSigned, diagnosticScore, taskScores } = state;
 
+  // Each entry in taskScores may be a plain number or an object { taskId, score, submittedAt }.
+  // Extract the numeric value uniformly before any comparison.
+  const scores = taskScores.map((s) => (typeof s === 'object' && s !== null ? s.score : s));
+
   // Tier 4: full team access — needs >= 2 tasks and an average score of 85+
   if (
     complianceSigned &&
     diagnosticScore >= 60 &&
-    taskScores.length >= 2 &&
-    taskScores.some((s) => s >= 70) &&
-    taskScores.reduce((sum, s) => sum + s, 0) / taskScores.length >= 85
+    scores.length >= 2 &&
+    scores.some((s) => s >= 70) &&
+    scores.reduce((sum, s) => sum + s, 0) / scores.length >= 85
   ) {
     return 4;
   }
@@ -128,7 +132,7 @@ function computeTier(state) {
   if (
     complianceSigned &&
     diagnosticScore >= 60 &&
-    taskScores.some((s) => s >= 70)
+    scores.some((s) => s >= 70)
   ) {
     return 3;
   }

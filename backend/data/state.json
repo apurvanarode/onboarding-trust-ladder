@@ -1,7 +1,28 @@
 {
-  "complianceSigned": false,
-  "diagnosticScore": 0,
-  "taskScores": [],
-  "currentTier": 0,
-  "unlockedAccess": ["Sandbox"]
+  "complianceSigned": true,
+  "diagnosticScore": 60,
+  "taskScores": [
+    {
+      "taskId": "task1",
+      "score": 78,
+      "submittedAt": "2026-09-26T04:51:07.704Z"
+    },
+    {
+      "taskId": "task1",
+      "score": 78,
+      "submittedAt": "2026-09-26T04:54:36.867Z"
+    },
+    {
+      "taskId": "task1",
+      "score": 78,
+      "submittedAt": "2026-09-26T04:55:40.629Z"
+    }
+  ],
+  "currentTier": 3,
+  "unlockedAccess": [
+    "Sandbox",
+    "Dev Environment",
+    "Repo Read",
+    "Repo Write (Non-Critical)"
+  ]
 }
